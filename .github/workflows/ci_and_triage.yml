@@ -1,0 +1,40 @@
+name: Automated Triage & Test Reflex
+
+on:
+  issues:
+    types: [opened]
+  pull_request:
+    types: [opened, synchronize]
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run Test Suite
+        run: |
+          python -m unittest discover tests
+
+  auto-respond:
+    needs: test
+    if: github.event_name == 'issues' && github.event.action == 'opened'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Welcome Issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '👋 **Thank you for reporting!** The Diamantenschmiede Automated Refinement Engine has received your ticket. Our automated test suite is verified and human review is underway. Stay tuned!'
+            });

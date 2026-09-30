@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scrub-vault"
+version = "1.0.0"
+authors = [
+  { name="tastenkasperle", email="diamantenschmiede@proton.me" },
+]
+description = "Zero-dependency in-memory PII airgap & reversible masking proxy for Cloud LLMs (GDPR Art. 32 compliant MCP server)"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Topic :: Security :: Cryptography",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+keywords = ["mcp", "mcp-server", "gdpr", "dsgvo", "pii-masking", "ai-security", "zero-dependency"]
+dependencies = []
+
+[project.urls]
+"Homepage" = "https://tastenkasperle.github.io/diamantenschmiede/"
+"Bug Tracker" = "https://github.com/tastenkasperle/scrub-vault/issues"
+"Repository" = "https://github.com/tastenkasperle/scrub-vault"
+
+[project.scripts]
+scrub-vault = "src.cli.main:main"
+scrub-vault-mcp = "src.mcp.server:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
