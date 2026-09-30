@@ -1,11 +1,16 @@
 # 🛡️ ScrubVault: Zero-Data-Leak AI Airgap & Reversible PII Masking Engine
 
+[![PyPI version](https://img.shields.io/pypi/v/scrub-vault.svg?color=blue)](https://pypi.org/project/scrub-vault/)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Zero Dependencies](https://img.shields.io/badge/Dependencies-Zero%20(Pure%20Python)-brightgreen.svg)]()
 [![Raptor Guard Certified](https://img.shields.io/badge/SAST%20Audit-0%20Vulnerabilities-success.svg)]()
 [![GDPR Art. 32](https://img.shields.io/badge/Compliance-GDPR%20Art.%2032%20Airgap-orange.svg)]()
 
 > **Send sensitive data to Cloud LLMs (ChatGPT, Claude, Gemini) without ever leaking confidential PII.**
+
+```bash
+pip install scrub-vault
+```
 
 ScrubVault is a lightweight, zero-dependency in-memory privacy proxy and Model Context Protocol (MCP) server. It intercept prompts, replaces personal identifiable information (emails, IBANs, IP addresses, credit cards, tax IDs) with deterministic local tokens (`{{EMAIL_1}}`, `{{IBAN_1}}`), and restores the original values when the AI responds.
 
