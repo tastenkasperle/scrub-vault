@@ -78,6 +78,20 @@ class TestScrubVault(unittest.TestCase):
         self.assertIn("{{EMAIL_1}}", scrubbed["logs"][0])
 
     def test_mcp_server_protocol(self):
+        # 0. initialize & ping
+        init_req = {"jsonrpc": "2.0", "id": 0, "method": "initialize", "params": {"protocolVersion": "2024-11-05"}}
+        init_resp = self.mcp_server.handle_request(init_req)
+        self.assertEqual(init_resp["result"]["serverInfo"]["name"], "scrub-vault")
+        self.assertIn("tools", init_resp["result"]["capabilities"])
+
+        # Notification should return None
+        notify_req = {"jsonrpc": "2.0", "method": "notifications/initialized"}
+        self.assertIsNone(self.mcp_server.handle_request(notify_req))
+
+        # Ping
+        ping_resp = self.mcp_server.handle_request({"jsonrpc": "2.0", "id": "p1", "method": "ping"})
+        self.assertEqual(ping_resp["result"], {})
+
         # 1. tools/list
         list_req = {"jsonrpc": "2.0", "id": 1, "method": "tools/list"}
         list_resp = self.mcp_server.handle_request(list_req)

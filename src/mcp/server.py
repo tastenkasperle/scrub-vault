@@ -70,7 +70,33 @@ class ScrubVaultMCPServer:
         method = req.get("method")
         params = req.get("params", {})
 
-        if method == "tools/list":
+        if method == "initialize":
+            return {
+                "jsonrpc": "2.0",
+                "id": req_id,
+                "result": {
+                    "protocolVersion": "2024-11-05",
+                    "capabilities": {
+                        "tools": {}
+                    },
+                    "serverInfo": {
+                        "name": "scrub-vault",
+                        "version": "1.0.0"
+                    }
+                }
+            }
+
+        elif method == "notifications/initialized":
+            return None
+
+        elif method == "ping":
+            return {
+                "jsonrpc": "2.0",
+                "id": req_id,
+                "result": {}
+            }
+
+        elif method == "tools/list":
             return {
                 "jsonrpc": "2.0",
                 "id": req_id,
@@ -169,8 +195,9 @@ class ScrubVaultMCPServer:
             try:
                 req = json.loads(line)
                 resp = self.handle_request(req)
-                sys.stdout.write(json.dumps(resp) + "\n")
-                sys.stdout.flush()
+                if resp is not None:
+                    sys.stdout.write(json.dumps(resp) + "\n")
+                    sys.stdout.flush()
             except Exception as e:
                 logging.exception("Failed to process stdio line")
 
