@@ -2,6 +2,7 @@
 
 [![PyPI version](https://img.shields.io/pypi/v/scrub-vault.svg?color=blue)](https://pypi.org/project/scrub-vault/)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+[![Glama Score](https://glama.ai/mcp/servers/tastenkasperle/scrub-vault/badges/score.svg)](https://glama.ai/mcp/servers/tastenkasperle/scrub-vault)
 [![Zero Dependencies](https://img.shields.io/badge/Dependencies-Zero%20(Pure%20Python)-brightgreen.svg)]()
 [![Raptor Guard Certified](https://img.shields.io/badge/SAST%20Audit-0%20Vulnerabilities-success.svg)]()
 [![GDPR Art. 32](https://img.shields.io/badge/Compliance-GDPR%20Art.%2032%20Airgap-orange.svg)]()
@@ -102,6 +103,12 @@ ScrubVault includes a native stdio Model Context Protocol (MCP) server. Add it t
     }
   }
 }
+```
+
+### 1-Click Install via Smithery (Claude Desktop, Cursor):
+
+```bash
+npx -y @smithery/cli install @tastenkasperle/scrub-vault --client claude
 ```
 
 ### Available MCP Tools:

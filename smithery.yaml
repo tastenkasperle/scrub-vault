@@ -1,0 +1,14 @@
+# Smithery configuration for ScrubVault
+# https://smithery.ai
+
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    description: "Configuration for ScrubVault in-memory PII airgap & masking proxy (zero config required)"
+    properties: {}
+  commandFunction: |-
+    (config) => ({
+      command: "python",
+      args: ["-m", "src.mcp.server"]
+    })
