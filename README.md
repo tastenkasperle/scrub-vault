@@ -3,7 +3,7 @@
 [![PyPI version](https://img.shields.io/pypi/v/scrub-vault.svg?color=blue)](https://pypi.org/project/scrub-vault/)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Glama Score](https://glama.ai/mcp/servers/tastenkasperle/scrub-vault/badges/score.svg)](https://glama.ai/mcp/servers/tastenkasperle/scrub-vault)
-[![M8ven Score](https://m8ven.ai/badge/mcp/tastenkasperle-scrub-vault-8i7iu3?v=8d21cd03a9eb27cde163fdb990cdcf84)](https://m8ven.ai/mcp/tastenkasperle-scrub-vault-8i7iu3?s=readme)
+[![M8ven Score](https://m8ven.ai/badge/mcp/tastenkasperle/scrub-vault)](https://m8ven.ai/mcp/tastenkasperle/scrub-vault?s=readme)
 [![Zero Dependencies](https://img.shields.io/badge/Dependencies-Zero%20(Pure%20Python)-brightgreen.svg)]()
 [![Raptor Guard Certified](https://img.shields.io/badge/SAST%20Audit-0%20Vulnerabilities-success.svg)]()
 [![GDPR Art. 32](https://img.shields.io/badge/Compliance-GDPR%20Art.%2032%20Airgap-orange.svg)]()
