@@ -54,15 +54,20 @@ class PhoneDetector(BaseDetector):
     def detect(self, text: str) -> List[Finding]:
         findings = []
         for match in self.PATTERN.finditer(text):
-            val = match.group().strip()
+            raw_val = match.group()
+            val = raw_val.strip()
+            lstrip_len = len(raw_val) - len(raw_val.lstrip())
+            rstrip_len = len(raw_val) - len(raw_val.rstrip())
+            start = match.start() + lstrip_len
+            end = match.end() - rstrip_len
             # Filter out pure small numbers or date lookalikes
             digits = re.sub(r'\D', '', val)
             if 7 <= len(digits) <= 15:
                 findings.append(Finding(
                     entity_type=self.name,
                     value=val,
-                    start=match.start(),
-                    end=match.end(),
+                    start=start,
+                    end=end,
                     confidence=0.90
                 ))
         return findings
@@ -154,7 +159,7 @@ class TaxIdDetector(BaseDetector):
                     value=match.group(),
                     start=match.start(),
                     end=match.end(),
-                    confidence=0.90
+                    confidence=0.94
                 ))
         return findings
 
@@ -165,10 +170,10 @@ class DetectorRegistry:
         if detectors is None:
             self.detectors = [
                 EmailDetector(),
-                PhoneDetector(),
                 IBANCardDetector(),
+                TaxIdDetector(),
                 IPDetector(),
-                TaxIdDetector()
+                PhoneDetector()
             ]
         else:
             self.detectors = detectors
@@ -178,8 +183,8 @@ class DetectorRegistry:
         for det in self.detectors:
             all_findings.extend(det.detect(text))
 
-        # Sort findings by start position, then length descending
-        all_findings.sort(key=lambda f: (f.start, -(f.end - f.start)))
+        # Sort findings by start position, then length descending, then confidence descending
+        all_findings.sort(key=lambda f: (f.start, -(f.end - f.start), -f.confidence))
 
         # Remove overlapping findings
         resolved: List[Finding] = []

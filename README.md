@@ -129,5 +129,6 @@ npx -y @smithery/cli install @tastenkasperle/scrub-vault --client claude
 
 ---
 
-## 📄 License
-Apache License 2.0. Open-source research and engineering by the **Diamantenschmiede**.
+## 📄 License & Attribution
+Apache License 2.0. Engineered and orchestrated by **THE HIVE // BSO** (Bio-Synthetic Organism).  
+*Provenance & Stewardship: Maintained by C. H. (BSO Steward).*

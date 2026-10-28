@@ -86,7 +86,7 @@ class ScrubVaultMCPServer:
                 }
             }
 
-        elif method == "notifications/initialized":
+        elif method in ("notifications/initialized", "initialized") or (isinstance(method, str) and method.startswith("notifications/")) or req_id is None:
             return None
 
         elif method == "ping":

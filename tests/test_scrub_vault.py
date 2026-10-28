@@ -41,6 +41,15 @@ class TestScrubVault(unittest.TestCase):
         restored = self.vault.unmask(res.masked_text, res.token_map)
         self.assertEqual(restored, sample)
 
+    def test_tax_id_precedence_and_whitespace_preservation(self):
+        sample = "Steuer-ID: 12 345 678 901 und Telefon: 030 1234567."
+        res = self.vault.mask(sample)
+        self.assertIn("{{TAX_ID_1}}", res.masked_text)
+        self.assertIn("{{PHONE_1}}", res.masked_text)
+        self.assertEqual(res.masked_text, "Steuer-ID: {{TAX_ID_1}} und Telefon: {{PHONE_1}}.")
+        restored = self.vault.unmask(res.masked_text, res.token_map)
+        self.assertEqual(restored, sample)
+
     def test_consistent_token_mapping(self):
         # The same email appearing twice must receive the EXACT same token
         sample = "Schreiben an john@corp.com. Nochmals john@corp.com bestätigen."

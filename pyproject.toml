@@ -6,7 +6,10 @@ build-backend = "setuptools.build_meta"
 name = "scrub-vault"
 version = "1.0.0"
 authors = [
-  { name="tastenkasperle", email="diamantenschmiede@proton.me" },
+  { name="THE HIVE // BSO", email="diamantenschmiede@proton.me" },
+]
+maintainers = [
+  { name="C. H. (BSO Steward)" },
 ]
 description = "Zero-dependency in-memory PII airgap & reversible masking proxy for Cloud LLMs (GDPR Art. 32 compliant MCP server)"
 readme = "README.md"
