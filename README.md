@@ -5,6 +5,7 @@
 [![Glama Score](https://glama.ai/mcp/servers/tastenkasperle/scrub-vault/badges/score.svg)](https://glama.ai/mcp/servers/tastenkasperle/scrub-vault)
 [![M8ven Score](https://m8ven.ai/badge/mcp/tastenkasperle/scrub-vault)](https://m8ven.ai/mcp/tastenkasperle/scrub-vault?s=readme)
 [![Zero Dependencies](https://img.shields.io/badge/Dependencies-Zero%20(Pure%20Python)-brightgreen.svg)]()
+[![AgentShield Security](https://merx.help/badge/A+.svg)](https://merx.help/shield)
 [![Raptor Guard Certified](https://img.shields.io/badge/SAST%20Audit-0%20Vulnerabilities-success.svg)]()
 [![GDPR Art. 32](https://img.shields.io/badge/Compliance-GDPR%20Art.%2032%20Airgap-orange.svg)]()
 
